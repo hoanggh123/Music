@@ -1,3 +1,19 @@
+<?php
+  session_start();
+  $msg = false;
+  include('db_connect.php');
+  if(isset($_POST['user_name'])){
+    $user_name = $_POST['user_name'];
+    $user_password = $_POST['user_password'];
+    $query = "select * from user where user = '".$user_name."' AND password = '" .$user_password."' limit 1 ";
+    $result = mysqli_query($con,$query);
+    if (mysqli_num_rows($result) == 1){
+      header('Location:index.php');
+    }else{
+      $msg = "Inccorect password";
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,7 +50,7 @@
               <label for="password">Mật khẩu</label>
               <input
                 type="password"
-                name="password"
+                name="user_password"
                 placeholder="Vui lòng nhập mật khẩu"
               />
             </div>
@@ -48,9 +64,9 @@
       </div>
       <div class="right_bx1">
         <img src="img/login_png.jpg" alt="">
-        <h3>
-          Inccorect Password
-        </h3>
+         <?php
+          echo ('<h3>'.$msg.'</h3>');
+        ?>
       </div>
     </header>
     <script src="js/app.js"></script>

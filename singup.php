@@ -1,3 +1,27 @@
+/*Đăng kí với PHP*/
+<?php
+  session_start();
+  include('db_connect.php');
+  $msg = false;
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $user_name =$_POST['user_name'];
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+    $user_re_password = $_POST['user_re_password'];
+    if(!empty($user_name) && !empty($user_email) && !empty($user_password) && !is_numeric($user_name)){
+      if ($user_password === $user_re_password) {
+        $query = "insert into user (user,email,password) VALUES ('$user_name','$user_email','$user_password')";
+        mysqli_query($con,$query);
+        header("Location:login.php");
+      }else{
+        $msg = "Pass not match";
+
+      }
+    }
+  }else{
+
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,10 +55,10 @@
               />
             </div>
             <div class="card">
-                <label for="email">Tài khoản</label>
+                <label for="email">Email</label>
                 <input
                   type="email"
-                  name="email"
+                  name="user_email"
                   placeholder="Vui lòng nhập email của bạn"
                 />
               </div>
@@ -42,7 +66,7 @@
               <label for="password">Mật khẩu</label>
               <input
                 type="password"
-                name="password"
+                name="user_password"
                 placeholder="Vui lòng nhập mật khẩu"
               />
             </div>
@@ -50,8 +74,8 @@
                 <label for="re_password">Nhập lại mật khẩu</label>
                 <input
                   type="password"
-                  name="re_password"
-                  placeholder="Vui lòng nhập mật khẩu"
+                  name="user_re_password"
+                  placeholder="Vui lòng nhập lại mật khẩu"
                 />
               </div>
             <input class="submit" type="submit" value="Login" />
@@ -64,7 +88,9 @@
       </div>
       <div class="right_bx1">
         <img src="img/login_png.jpg" alt="" />
-        <h3>Inccorect Password</h3>
+        <?php
+          echo ('<h3>'.$msg.'</h3>');
+        ?>
       </div>
     </header>
     <script src="js/app.js"></script>
