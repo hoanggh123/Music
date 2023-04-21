@@ -31,6 +31,14 @@
               />
             </div>
             <div class="card">
+                <label for="email">Tài khoản</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Vui lòng nhập email của bạn"
+                />
+              </div>
+            <div class="card">
               <label for="password">Mật khẩu</label>
               <input
                 type="password"
@@ -38,19 +46,25 @@
                 placeholder="Vui lòng nhập mật khẩu"
               />
             </div>
+            <div class="card">
+                <label for="re_password">Nhập lại mật khẩu</label>
+                <input
+                  type="password"
+                  name="re_password"
+                  placeholder="Vui lòng nhập mật khẩu"
+                />
+              </div>
             <input class="submit" type="submit" value="Login" />
             <div class="check">
               <input type="checkbox" name="" id="" /><span>Remember</span>
             </div>
-            <p>Bạn chưa có tài khoản ?<a href="singup.html">Đăng kí ngay</a></p>
+            <p>Bạn đã có tài khoản ?<a href="login.html">Đăng kí ngay</a></p>
           </form>
         </div>
       </div>
       <div class="right_bx1">
-        <img src="img/login_png.jpg" alt="">
-        <h3>
-          Inccorect Password
-        </h3>
+        <img src="img/login_png.jpg" alt="" />
+        <h3>Inccorect Password</h3>
       </div>
     </header>
     <script src="js/app.js"></script>

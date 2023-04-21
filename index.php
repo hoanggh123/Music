@@ -338,7 +338,6 @@
               <i class="bi bi-arrow-right-short" id="popular_artists_right"></i>
             </div>
           </div>
-          f
           <div class="item">
             <li>
               <img src="img/arjit.jpg" alt="" />
